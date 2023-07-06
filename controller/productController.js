@@ -9,3 +9,13 @@ export const getProducts = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+export const getProductsById = async (req, res) => {
+  try { 
+    const id = req.params.id;
+    const products = await Product.findOne({ id: id });
+    return res.status(200).json(products);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
